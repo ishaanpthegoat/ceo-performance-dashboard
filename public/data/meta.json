@@ -1,0 +1,27 @@
+{
+ "generatedAt": "2026-07-26T15:21:50.798Z",
+ "financials": {
+  "ok": [],
+  "cached": [],
+  "failed": []
+ },
+ "prices": {
+  "ok": [
+   "AAPL",
+   "MSFT",
+   "NVDA",
+   "GOOGL",
+   "AMZN",
+   "META",
+   "TSLA",
+   "JPM",
+   "AVGO",
+   "NFLX",
+   "COST",
+   "DIS",
+   "SPY"
+  ],
+  "cached": [],
+  "failed": []
+ }
+}

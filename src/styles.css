@@ -1,0 +1,171 @@
+@import "tailwindcss";
+
+/*
+ * Colour comes from the data-viz reference palette. Two selected modes — the
+ * dark steps are the same eight hues re-stepped for the dark surface, not an
+ * automatic inversion of the light ones.
+ */
+
+@theme {
+  --font-sans: system-ui, -apple-system, "Segoe UI", sans-serif;
+  --color-page: #f9f9f7;
+  --color-surface: #fcfcfb;
+  --color-surface-2: #f2f1ed;
+  --color-ink: #0b0b0b;
+  --color-ink-2: #52514e;
+  --color-muted: #898781;
+  --color-grid: #e1e0d9;
+  --color-axis: #c3c2b7;
+  --color-hairline: rgb(11 11 11 / 0.1);
+
+  --color-s1: #2a78d6;
+  --color-s2: #eb6834;
+  --color-s3: #1baf7a;
+  --color-s4: #eda100;
+  --color-s5: #e87ba4;
+  --color-s6: #008300;
+  --color-s7: #4a3aa7;
+  --color-s8: #e34948;
+
+  --color-good: #0ca30c;
+  --color-warning: #fab219;
+  --color-serious: #ec835a;
+  --color-critical: #d03b3b;
+
+  --animate-marquee: marquee 42s linear infinite;
+  --animate-marquee-v: marquee-v 42s linear infinite;
+  --animate-aurora: aurora 22s ease-in-out infinite alternate;
+  --animate-beam: beam 5s linear infinite;
+  --animate-shimmer: shimmer 3s linear infinite;
+  --animate-meteor: meteor 5s linear infinite;
+}
+
+@layer theme {
+  :root.dark,
+  :root[data-theme="dark"] {
+    --color-page: #0d0d0d;
+    --color-surface: #1a1a19;
+    --color-surface-2: #222220;
+    --color-ink: #ffffff;
+    --color-ink-2: #c3c2b7;
+    --color-muted: #898781;
+    --color-grid: #2c2c2a;
+    --color-axis: #383835;
+    --color-hairline: rgb(255 255 255 / 0.1);
+
+    --color-s1: #3987e5;
+    --color-s2: #d95926;
+    --color-s3: #199e70;
+    --color-s4: #c98500;
+    --color-s5: #d55181;
+    --color-s6: #008300;
+    --color-s7: #9085e9;
+    --color-s8: #e66767;
+
+    --color-good: #0ca30c;
+  }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(-50% - var(--marquee-gap, 1.5rem) / 2)); }
+}
+@keyframes marquee-v {
+  from { transform: translateY(0); }
+  to { transform: translateY(calc(-50% - var(--marquee-gap, 1.5rem) / 2)); }
+}
+@keyframes aurora {
+  0%   { transform: translate3d(-12%, -6%, 0) rotate(-8deg) scale(1.05); }
+  50%  { transform: translate3d(8%, 4%, 0) rotate(6deg) scale(1.18); }
+  100% { transform: translate3d(-4%, 8%, 0) rotate(-3deg) scale(1.08); }
+}
+@keyframes beam {
+  from { offset-distance: 0%; }
+  to   { offset-distance: 100%; }
+}
+@keyframes shimmer {
+  from { background-position: 200% center; }
+  to   { background-position: -200% center; }
+}
+@keyframes meteor {
+  0%   { transform: rotate(215deg) translateX(0); opacity: 1; }
+  70%  { opacity: 1; }
+  100% { transform: rotate(215deg) translateX(-620px); opacity: 0; }
+}
+
+@layer base {
+  *,
+  ::before,
+  ::after {
+    border-color: var(--color-hairline);
+  }
+
+  html {
+    color-scheme: light dark;
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-page);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-feature-settings: "cv11", "ss01";
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* Numbers in table columns and axis ticks must align vertically. Large
+     standalone figures deliberately keep proportional figures. */
+  .tnum {
+    font-variant-numeric: tabular-nums;
+  }
+
+  ::selection {
+    background: var(--color-s1);
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-s1);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-axis);
+    border-radius: 999px;
+    border: 3px solid var(--color-page);
+  }
+  ::-webkit-scrollbar-thumb:hover { background: var(--color-muted); }
+}
+
+@layer utilities {
+  .hairline {
+    box-shadow: inset 0 0 0 1px var(--color-hairline);
+  }
+  /* Recharts writes inline SVG that ignores Tailwind; these are the hooks. */
+  .recharts-surface { overflow: visible; }
+  .recharts-cartesian-axis-tick text {
+    fill: var(--color-muted);
+    font-size: 11px;
+    font-variant-numeric: tabular-nums;
+  }
+  .recharts-cartesian-grid line {
+    stroke: var(--color-grid);
+    stroke-width: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
