@@ -1,0 +1,84 @@
+name: Biweekly data sync
+
+# Runs on the 1st and 15th of every month at 09:00 UTC — the biweekly cadence.
+# Cron has no native "every two weeks", and `*/14` on day-of-month misbehaves at
+# month boundaries (it would fire on the 1st, 15th and 29th, then reset), so
+# naming the two days explicitly is the correct way to express this.
+on:
+  schedule:
+    - cron: "0 9 1,15 * *"
+  workflow_dispatch:
+    inputs:
+      only:
+        description: "Limit the sync to one dataset"
+        required: false
+        default: ""
+        type: choice
+        options: ["", "financials", "prices"]
+
+concurrency:
+  group: data-sync
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+          cache: npm
+
+      - run: npm ci
+
+      - name: Fetch filings and prices
+        env:
+          # SEC asks for a contact address in the User-Agent. Set the SEC_CONTACT
+          # repository variable to your own; the script falls back to a default.
+          SEC_CONTACT: ${{ vars.SEC_CONTACT }}
+        run: |
+          if [ -n "${{ inputs.only }}" ]; then
+            npm run sync -- --only=${{ inputs.only }}
+          else
+            npm run sync
+          fi
+
+      # A provider being down must not land an empty dataset. The sync script
+      # already falls back to the committed copy, but this is the backstop: if
+      # the result is missing or degenerate, fail the run and keep the old data.
+      - name: Sanity-check the output
+        run: |
+          node --input-type=module -e '
+            import { readFile } from "node:fs/promises";
+            const fin = JSON.parse(await readFile("public/data/financials.json", "utf8"));
+            const px  = JSON.parse(await readFile("public/data/prices.json", "utf8"));
+            const companies = Object.keys(fin.companies ?? {}).length;
+            const symbols   = Object.keys(px.symbols ?? {}).length;
+            const years = Object.values(fin.companies ?? {})
+              .reduce((n, c) => n + (c.years?.length ?? 0), 0);
+            console.log(`companies=${companies} symbols=${symbols} fiscal-year-rows=${years}`);
+            if (companies < 12) throw new Error(`expected 12 companies, got ${companies}`);
+            if (symbols < 13)   throw new Error(`expected 13 symbols, got ${symbols}`);
+            if (years < 100)    throw new Error(`suspiciously few fiscal years: ${years}`);
+            if (!px.symbols.benchmark?.monthly?.length) throw new Error("benchmark series is empty");
+          '
+
+      - name: Verify the app still builds against the new data
+        run: npm run build
+
+      - name: Commit if anything changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/data
+          if git diff --cached --quiet; then
+            echo "No data changes."
+          else
+            git commit -m "chore(data): biweekly sync $(date -u +%Y-%m-%d)"
+            git push
+          fi
