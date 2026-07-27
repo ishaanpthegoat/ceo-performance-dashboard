@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-07-26T15:21:50.798Z",
+ "generatedAt": "2026-07-27T02:12:12.218Z",
  "note": "Monthly split-adjusted closes. PRICE RETURN — excludes dividends. See scripts/sync.mjs.",
  "symbols": {
   "aapl": {
