@@ -26,6 +26,8 @@ permissions:
 jobs:
   sync:
     runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.commit.outputs.changed }}
     steps:
       - uses: actions/checkout@v5
 
@@ -72,13 +74,47 @@ jobs:
         run: npm run build
 
       - name: Commit if anything changed
+        id: commit
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add public/data
           if git diff --cached --quiet; then
             echo "No data changes."
-          else
-            git commit -m "chore(data): biweekly sync $(date -u +%Y-%m-%d)"
-            git push
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
           fi
+
+          git commit -m "chore(data): biweekly sync $(date -u +%Y-%m-%d)"
+
+          # Rebase-and-retry rather than a bare push. If a manual dispatch
+          # overlaps the scheduled run, the loser checked out before the winner
+          # committed and its push is not a fast-forward. Regenerated data is
+          # always safe to replay on top of whatever landed first — it is
+          # derived output, not authored work — so rebasing cannot lose
+          # anything.
+          for attempt in 1 2 3; do
+            if git push; then
+              echo "changed=true" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            echo "Push rejected (attempt $attempt) — rebasing on origin/main."
+            git pull --rebase --autostash origin main || exit 1
+            sleep $((attempt * 5))
+          done
+
+          echo "::error::Could not push after 3 attempts."
+          exit 1
+
+  # Redeploy the site with the new data. This has to be an explicit call: the
+  # commit above is made with GITHUB_TOKEN, and GitHub does not fire workflow
+  # triggers for GITHUB_TOKEN pushes (it is the loop guard). Relying on
+  # pages.yml's `push` trigger would leave the published site stale forever.
+  publish:
+    needs: sync
+    if: needs.sync.outputs.changed == 'true'
+    uses: ./.github/workflows/pages.yml
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
