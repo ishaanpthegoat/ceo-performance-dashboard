@@ -24,6 +24,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+        with:
+          # Check out the branch tip, not the SHA that triggered this workflow.
+          # When sync.yml calls this job, the triggering SHA predates the data
+          # commit the sync just pushed — checking that out would publish the
+          # previous run's data and the site would always lag one sync behind.
+          ref: ${{ github.event.repository.default_branch }}
+
       - uses: actions/setup-node@v5
         with:
           node-version: "22"
