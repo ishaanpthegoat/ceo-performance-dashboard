@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-01T16:06:09.608Z",
+ "generatedAt": "2026-10-15T14:01:13.479Z",
  "source": "SEC EDGAR XBRL companyfacts",
  "note": "Cash-flow-statement values as most recently restated. Currency USD.",
  "companies": {
@@ -2110,6 +2110,16 @@
      "revenue": 275235000000,
      "netIncome": 8099000000,
      "fiscalEnd": "2025-08-31"
+    },
+    {
+     "fy": 2026,
+     "buybacks": 848000000,
+     "dividends": 2458000000,
+     "capex": 6435000000,
+     "operatingCashFlow": 15817000000,
+     "revenue": 303154000000,
+     "netIncome": 9226000000,
+     "fiscalEnd": "2026-08-30"
     }
    ]
   },
