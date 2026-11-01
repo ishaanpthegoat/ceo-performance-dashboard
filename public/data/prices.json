@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-15T14:01:13.479Z",
+ "generatedAt": "2026-11-01T15:51:57.740Z",
  "note": "Monthly split-adjusted closes. PRICE RETURN — excludes dividends. See scripts/sync.mjs.",
  "symbols": {
   "aapl": {
@@ -7,8 +7,8 @@
    "source": "nasdaq",
    "basis": "split-adjusted close, excludes dividends",
    "first": "2016-10-31",
-   "last": "2026-10-14",
-   "latestClose": 342.96,
+   "last": "2026-10-30",
+   "latestClose": 344.63,
    "monthly": [
     {
      "date": "2016-10-31",
@@ -491,8 +491,8 @@
      "close": 333.02
     },
     {
-     "date": "2026-10-14",
-     "close": 342.96
+     "date": "2026-10-30",
+     "close": 344.63
     }
    ]
   },
@@ -501,8 +501,8 @@
    "source": "nasdaq",
    "basis": "split-adjusted close, excludes dividends",
    "first": "2016-10-31",
-   "last": "2026-10-14",
-   "latestClose": 533.69,
+   "last": "2026-10-30",
+   "latestClose": 521.91,
    "monthly": [
     {
      "date": "2016-10-31",
@@ -985,8 +985,8 @@
      "close": 512.9
     },
     {
-     "date": "2026-10-14",
-     "close": 533.69
+     "date": "2026-10-30",
+     "close": 521.91
     }
    ]
   },
@@ -995,8 +995,8 @@
    "source": "nasdaq",
    "basis": "split-adjusted close, excludes dividends",
    "first": "2016-10-31",
-   "last": "2026-10-14",
-   "latestClose": 221.3,
+   "last": "2026-10-30",
+   "latestClose": 204.64,
    "monthly": [
     {
      "date": "2016-10-31",
@@ -1479,8 +1479,8 @@
      "close": 228.38
     },
     {
-     "date": "2026-10-14",
-     "close": 221.3
+     "date": "2026-10-30",
+     "close": 204.64
     }
    ]
   },
@@ -1489,8 +1489,8 @@
    "source": "nasdaq",
    "basis": "split-adjusted close, excludes dividends",
    "first": "2016-10-31",
-   "last": "2026-10-14",
-   "latestClose": 347.64,
+   "last": "2026-10-30",
+   "latestClose": 279.84,
    "monthly": [
     {
      "date": "2016-10-31",
@@ -1973,8 +1973,8 @@
      "close": 344.08
     },
     {
-     "date": "2026-10-14",
-     "close": 347.64
+     "date": "2026-10-30",
+     "close": 279.84
     }
    ]
   },
@@ -1983,8 +1983,8 @@
    "source": "nasdaq",
    "basis": "split-adjusted close, excludes dividends",
    "first": "2016-10-31",
-   "last": "2026-10-14",
-   "latestClose": 254.08,
+   "last": "2026-10-30",
+   "latestClose": 240.35,
    "monthly": [
     {
      "date": "2016-10-31",
@@ -2467,8 +2467,8 @@
      "close": 249.15
     },
     {
-     "date": "2026-10-14",
-     "close": 254.08
+     "date": "2026-10-30",
+     "close": 240.35
     }
    ]
   },
@@ -2477,8 +2477,8 @@
    "source": "nasdaq",
    "basis": "split-adjusted close, excludes dividends",
    "first": "2016-10-31",
-   "last": "2026-10-14",
-   "latestClose": 737.54,
+   "last": "2026-10-30",
+   "latestClose": 614.99,
    "monthly": [
     {
      "date": "2016-10-31",
@@ -2961,8 +2961,8 @@
      "close": 725.18
     },
     {
-     "date": "2026-10-14",
-     "close": 737.54
+     "date": "2026-10-30",
+     "close": 614.99
     }
    ]
   },
@@ -2971,8 +2971,8 @@
    "source": "nasdaq",
    "basis": "split-adjusted close, excludes dividends",
    "first": "2016-10-31",
-   "last": "2026-10-14",
-   "latestClose": 367.16,
+   "last": "2026-10-30",
+   "latestClose": 399.81,
    "monthly": [
     {
      "date": "2016-10-31",
@@ -3455,8 +3455,8 @@
      "close": 354.81
     },
     {
-     "date": "2026-10-14",
-     "close": 367.16
+     "date": "2026-10-30",
+     "close": 399.81
     }
    ]
   },
@@ -3465,8 +3465,8 @@
    "source": "nasdaq",
    "basis": "split-adjusted close, excludes dividends",
    "first": "2016-10-31",
-   "last": "2026-10-14",
-   "latestClose": 335.28,
+   "last": "2026-10-30",
+   "latestClose": 337.04,
    "monthly": [
     {
      "date": "2016-10-31",
@@ -3949,8 +3949,8 @@
      "close": 330.83
     },
     {
-     "date": "2026-10-14",
-     "close": 335.28
+     "date": "2026-10-30",
+     "close": 337.04
     }
    ]
   },
@@ -3959,8 +3959,8 @@
    "source": "nasdaq",
    "basis": "split-adjusted close, excludes dividends",
    "first": "2016-10-31",
-   "last": "2026-10-14",
-   "latestClose": 346.25,
+   "last": "2026-10-30",
+   "latestClose": 326.08,
    "monthly": [
     {
      "date": "2016-10-31",
@@ -4443,8 +4443,8 @@
      "close": 351.19
     },
     {
-     "date": "2026-10-14",
-     "close": 346.25
+     "date": "2026-10-30",
+     "close": 326.08
     }
    ]
   },
@@ -4453,8 +4453,8 @@
    "source": "nasdaq",
    "basis": "split-adjusted close, excludes dividends",
    "first": "2016-10-31",
-   "last": "2026-10-14",
-   "latestClose": 70.57,
+   "last": "2026-10-30",
+   "latestClose": 62.08,
    "monthly": [
     {
      "date": "2016-10-31",
@@ -4937,8 +4937,8 @@
      "close": 69.58
     },
     {
-     "date": "2026-10-14",
-     "close": 70.57
+     "date": "2026-10-30",
+     "close": 62.08
     }
    ]
   },
@@ -4947,8 +4947,8 @@
    "source": "nasdaq",
    "basis": "split-adjusted close, excludes dividends",
    "first": "2016-10-31",
-   "last": "2026-10-14",
-   "latestClose": 982,
+   "last": "2026-10-30",
+   "latestClose": 1012.28,
    "monthly": [
     {
      "date": "2016-10-31",
@@ -5431,8 +5431,8 @@
      "close": 910.34
     },
     {
-     "date": "2026-10-14",
-     "close": 982
+     "date": "2026-10-30",
+     "close": 1012.28
     }
    ]
   },
@@ -5441,8 +5441,8 @@
    "source": "nasdaq",
    "basis": "split-adjusted close, excludes dividends",
    "first": "2016-10-31",
-   "last": "2026-10-14",
-   "latestClose": 108.99,
+   "last": "2026-10-30",
+   "latestClose": 110.94,
    "monthly": [
     {
      "date": "2016-10-31",
@@ -5925,8 +5925,8 @@
      "close": 104.9
     },
     {
-     "date": "2026-10-14",
-     "close": 108.99
+     "date": "2026-10-30",
+     "close": 110.94
     }
    ]
   },
@@ -5935,8 +5935,8 @@
    "source": "nasdaq",
    "basis": "split-adjusted close, excludes dividends",
    "first": "2016-10-31",
-   "last": "2026-10-14",
-   "latestClose": 769.6,
+   "last": "2026-10-30",
+   "latestClose": 755.72,
    "monthly": [
     {
      "date": "2016-10-31",
@@ -6419,8 +6419,8 @@
      "close": 762.63
     },
     {
-     "date": "2026-10-14",
-     "close": 769.6
+     "date": "2026-10-30",
+     "close": 755.72
     }
    ]
   }

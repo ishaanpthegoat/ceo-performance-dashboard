@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-15T14:01:13.479Z",
+ "generatedAt": "2026-11-01T15:51:57.740Z",
  "source": "SEC EDGAR XBRL companyfacts",
  "note": "Cash-flow-statement values as most recently restated. Currency USD.",
  "companies": {
@@ -846,7 +846,7 @@
    ]
   },
   "amzn": {
-   "entityName": "AMAZON COM INC",
+   "entityName": "AMAZON.COM, INC.",
    "cik": "0001018724",
    "tagsUsed": {
     "buybacks": "PaymentsForRepurchaseOfCommonStock",
@@ -1707,7 +1707,7 @@
    ]
   },
   "nflx": {
-   "entityName": "NETFLIX INC",
+   "entityName": "Netflix, Inc.",
    "cik": "0001065280",
    "tagsUsed": {
     "buybacks": "PaymentsForRepurchaseOfCommonStock",
