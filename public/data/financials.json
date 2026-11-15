@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-01T15:51:57.740Z",
+ "generatedAt": "2026-11-15T16:07:58.593Z",
  "source": "SEC EDGAR XBRL companyfacts",
  "note": "Cash-flow-statement values as most recently restated. Currency USD.",
  "companies": {
@@ -231,11 +231,22 @@
      "netIncome": 112010000000,
      "rnd": 34550000000,
      "fiscalEnd": "2025-09-27"
+    },
+    {
+     "fy": 2026,
+     "buybacks": 86390000000,
+     "dividends": 15721000000,
+     "capex": 9041000000,
+     "operatingCashFlow": 145097000000,
+     "revenue": 478834000000,
+     "netIncome": 132175000000,
+     "rnd": 45765000000,
+     "fiscalEnd": "2026-09-26"
     }
    ]
   },
   "msft": {
-   "entityName": "MICROSOFT CORPORATION",
+   "entityName": "MICROSOFT CORP",
    "cik": "0000789019",
    "tagsUsed": {
     "buybacks": "PaymentsForRepurchaseOfCommonStock",
